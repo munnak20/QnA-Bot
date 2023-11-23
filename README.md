@@ -58,7 +58,7 @@ pip install -r requirements.txt
 ```
 Move inside the Backed directory to build the database
 ```pip
-cd QnA-Bot/Backed
+cd QnA-Bot/Backend
 python database_setup.py
 ```
 
