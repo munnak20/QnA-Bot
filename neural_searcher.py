@@ -10,7 +10,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate 
 
 
-OPENAI_API_KEY="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"
+OPENAI_API_KEY="Enter your openai API key here"
 
 class NeuralSearcher:
     def __init__(self, collection_name):
