@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 # The file where NeuralSearcher is stored
 from neural_searcher import NeuralSearcher
-# from get_response import get_response_from_openai
 
 app = FastAPI()
 
