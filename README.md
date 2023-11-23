@@ -55,33 +55,40 @@ Install requirements:
 ```pip
 pip install -r requirements.txt
 ```
-
-Now run database_setup.py file:
+Move inside the Backed directory to build the database
 ```pip
+cd QnA-Bot/Backed
 python database_setup.py
 ```
 
-Make sure you are in the same directory.
+Get back to the parent folder by issuing the command
+```pip
+cd ..
+```
 
 Now get your Openai key  from [link](https://platform.openai.com/api-keys) and put it in "neural_searcher.py" file:
 ```pip
 OPENAI_API_KEY="your openai key"
 ```
 
+
 Now run service.py file:
 ```pip
 python service.py
 ```
 
-Now your backend server is running on:
+Now your api server is running on:
 ```pip
 http://localhost:8000/api/search
 ```
 
-Finally run "queries.py" file:
+Type in the queries in the queries.py file and run it:
 ```pip
 python queries.py
 ```
+
+#sample query and answer
+![image](https://github.com/munnak20/QnA-Bot/assets/105987153/f4e8c998-40e8-410a-8881-7e41efe1af76)
 
 
 
