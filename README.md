@@ -49,7 +49,7 @@ localhost:6333/dashboard
 
 Clone this repository to your system:
 ```pip
-git clone https:
+git clone https://github.com/munnak20/QnA-Bot
 ```
 Install requirements:
 ```pip
