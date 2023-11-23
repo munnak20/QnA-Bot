@@ -30,6 +30,7 @@ Make sure you have Python and pip is installed on your system.
 
 
 #Download and Run
+
 First, download the latest Qdrant image from Dockerhub:
 ```pip
 docker pull qdrant/qdrant
