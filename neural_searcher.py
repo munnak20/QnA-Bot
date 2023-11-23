@@ -5,10 +5,12 @@ from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from tqdm.auto import tqdm
 from typing import List
-from langchain import  PromptTemplate, LLMChain
 from langchain.chat_models import ChatOpenAI
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate 
 
-OPENAI_API_KEY="Put your openai api key here"
+
+OPENAI_API_KEY="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"
 
 class NeuralSearcher:
     def __init__(self, collection_name):
@@ -63,21 +65,4 @@ class NeuralSearcher:
                                         model_name="gpt-3.5-turbo")
                         )
         return llm_chain.run({"query":query,'docs':docs})
-
-# client = QdrantClient("http://localhost:6333")
-# collection_name = "big_basket_product"
-
-# embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-
-# def get_relevant_data(question: str, top_k: int) -> List[str]:
-#     try:
-#         encoded_query = embedding_model.encode(question).tolist()  # generate embeddings for the question
-#         result = client.search(
-#             collection_name=collection_name,
-#             query_vector=encoded_query,
-#             limit=top_k,
-#         )  
-#         return result
-#     except Exception as e:
-#         print({e})
 

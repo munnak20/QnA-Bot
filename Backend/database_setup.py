@@ -1,16 +1,14 @@
 import pandas as pd
 import numpy as np
 import csv
-import torch
-from transformers import pipeline
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from tqdm.auto import tqdm
 from typing import List
-from langchain import  PromptTemplate, LLMChain
-from langchain.chat_models import ChatOpenAI
 from qdrant_client.models import PointStruct
+
+
 file_path = 'bigBasketProducts.csv'
 df = pd.read_csv(file_path, encoding="utf8")
 
@@ -21,12 +19,7 @@ value_to_replace = 0  #if rating has null value then replace it with 0
 df['rating'].fillna(value_to_replace, inplace=True)
 
 
-#API_KEY = "hkVu34x5uMUBeQASgjNLPyVakYs9LLtJQVGOOUxRazCjh1hZ4uOz8A"
 client = QdrantClient("http://localhost:6333")
-
-#with open("bigBasketProducts.csv", encoding="utf8") as csvfile:
-#    reader = csv.DictReader(csvfile)
-#    document = list(reader)
 
 #setup the collection
 collection_name = "big_basket_product"
@@ -48,19 +41,6 @@ embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
  
-"""
-client.upsert(
-        collection_name=collection_name,
-        points=[
-            PointStruct(
-                id=idx,
-                vector=embedding_model.encode(doc["description"]).tolist(),
-                payload=doc
-                )
-            for idx, doc in enumerate(document)
-            ]
-        )
-"""
 batch_size = 512 
 for index in tqdm(range(0, len(df), batch_size)):
     i_end = min(index + batch_size, len(df))  # find end of batch
@@ -72,13 +52,6 @@ for index in tqdm(range(0, len(df), batch_size)):
     client.upsert(
         collection_name=collection_name,
         points=models.Batch(ids = ids, vectors=emb, payloads=meta)
-        #points=[
-        #    PointStruct(
-        #        id=ids,
-        #        vector = emb,
-        #        payload=meta
-        #    )
-        #]
     )
 
 collection_vector_count = client.get_collection(collection_name=collection_name).vectors_count
@@ -86,4 +59,3 @@ print(f"Vector count in collection: {collection_vector_count}")
 assert collection_vector_count == len(df)
 
 
-print("All is well")
