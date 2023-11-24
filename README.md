@@ -31,34 +31,40 @@ Make sure you have Python and pip is installed on your system.
 
 #Download and Run
 
-First, download the latest Qdrant image from Dockerhub:
+
+
+
+First, open terminal and paste the below code to download the latest Qdrant image from Dockerhub:
 ```pip
 docker pull qdrant/qdrant
 ```
 
 Then, run the service:
 ```pip
-docker run -p 6333:6333 -p 6334:6334 \
-    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
-    qdrant/qdrant
+docker run -p 6333:6333 qdrant/qdrant
 ```
 
-Now Qdrant is accesible on:
+Now Qdrant will be accesible on:
 ```pip
-localhost:6333/dashboard
+[localhost:6333/dashboard](http://localhost:6333/dashboard)
 ```
 
-Clone this repository to your system:
+Open a new terminal and clone this repository to your system:
 ```pip
 git clone https://github.com/munnak20/QnA-Bot
 ```
-Install requirements:
+Go to the QnA-Bot directory and install requirements:
+```pip
+cd QnA-Bot
+```
 ```pip
 pip install -r requirements.txt
 ```
+
+
 Move inside the Backed directory to build the database
 ```pip
-cd QnA-Bot/Backend
+cd Backend
 python database_setup.py
 ```
 
