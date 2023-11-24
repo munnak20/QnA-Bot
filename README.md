@@ -90,7 +90,7 @@ Now your api server is running on:
 http://localhost:8000/api/search
 ```
 
-Type in the queries in the queries.py file and run it:
+Open new terminal and type in your queries in the queries.py file and run it:
 ```pip
 python queries.py
 ```
