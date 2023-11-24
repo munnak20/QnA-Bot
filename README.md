@@ -65,9 +65,10 @@ pip install -r requirements.txt
 Move inside the Backed directory to build the database
 ```pip
 cd Backend
+```
+```pip
 python database_setup.py
 ```
-
 Get back to the parent folder by issuing the command
 ```pip
 cd ..
